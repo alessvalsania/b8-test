@@ -1,0 +1,32 @@
+<div [className]="`w-[320px] p-4 mx-auto rounded-xl shadow-xl overflow-hidden bg-${color()} cursor-pointer`"
+  [routerLink]="['/tournaments', name().toLowerCase()]">
+  <!-- Imagen de perfil -->
+  <!-- Esta línea corrige un pequeño error de tailwind -->
+  <div class="bg-white"></div>
+  <div class="relative  mb-1 rounded-md">
+    <img [src]="imageUrl()" alt="Christian Gomes" class="w-full h-[300px] object-cover rounded-md">
+    <!-- Overlay gradient opcional -->
+    <div class="absolute inset-0 bg-gradient-to-t rounded-md from-black/40 to-transparent"></div>
+  </div>
+
+  <!-- Contenido de la tarjeta -->
+  <!-- Nombre -->
+  <h2 class="text-5xl font-sofia-black text-bg-darker leading-none">
+    <p class="m-0 leading-none">{{ name() | uppercase }}</p>
+    <p class="m-0 leading-none">{{ lastname() | uppercase }}</p>
+  </h2>
+
+  <!-- Título/Posición -->
+  <div class="flex justify-between items-center">
+
+    <p class="text-bg-dark text-lg ">
+      {{role()}}
+    </p>
+    <!-- Badge/Indicador -->
+    <div class="flex justify-end ">
+      <div class="w-6 h-6 bg-green-300 rounded-full flex items-center justify-center">
+
+      </div>
+    </div>
+  </div>
+</div>

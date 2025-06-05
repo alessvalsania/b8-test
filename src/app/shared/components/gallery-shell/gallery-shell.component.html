@@ -1,0 +1,28 @@
+<div>
+  <div class="flex items-end lg:items-center justify-between mb-4">
+    <div class="flex text-green font-sofia-black text-xs lg:text-lg bg-bg-dark py-2 px-4 rounded-lg">
+      <img src="/assets/svgs/screen.svg" alt="screen" class="w-5 h-5 mr-2 my-auto" />
+      {{status() | uppercase}}
+
+    </div>
+
+    <div class=" font-sofia-black text-xs lg:text-lg bg-bg-dark py-2 px-4 rounded-lg">
+      <span class="mr-2 uppercase text-light-grey">Organizado por:</span> <br class="inline lg:hidden" />
+      <span class="text-green">{{organizer() | uppercase}}</span>
+
+    </div>
+
+  </div>
+  <!-- Desktop Gallery -->
+  <div class="hidden lg:block">
+    <sha-gallery-desktop [images]="images()" [currentIndex]="currentIndex()" [isAutoPlaying]="isAutoPlaying()"
+      [progress]="progress()" (indexChange)="onIndexChange($event)" (toggleAutoPlay)="onToggleAutoPlay()"
+      (nextImage)="onNextImage()" (previousImage)="onPreviousImage()" />
+  </div>
+  <!-- Mobile Gallery -->
+  <div class="lg:hidden">
+    <sha-gallery-mobile [images]="images()" [currentIndex]="currentIndex()" [isAutoPlaying]="isAutoPlaying()"
+      [progress]="progress()" (indexChange)="onIndexChange($event)" (toggleAutoPlay)="onToggleAutoPlay()"
+      (nextImage)="onNextImage()" (previousImage)="onPreviousImage()" />
+  </div>
+</div>

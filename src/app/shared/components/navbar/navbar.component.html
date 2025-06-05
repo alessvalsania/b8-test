@@ -1,0 +1,132 @@
+<nav class="flex flex-col lg:flex-row justify-between
+            h-auto lg:h-[136px]
+            py-4 lg:py-8 px-4 lg:px-16
+            font-archivo
+            overflow-hidden transition-all duration-300 ease-in-out">
+
+  <!-- Header Container: Logo + Desktop Nav + Mobile Burger -->
+  <div class="flex justify-between items-center lg:justify-start lg:flex-1">
+
+    <!-- Logo -->
+    <div class="flex items-center">
+      <img src="/assets/svgs/logo.svg" alt="Logo" class="w-[50px] h-[50px]">
+    </div>
+
+    <!-- Desktop Navigation Links -->
+    <nav class="hidden lg:flex items-center ml-11" aria-label="Main navigation">
+      <ul class="flex flex-row text-lg">
+        @for (item of navbarItems; track $index) {
+        <li class="ml-11 hover:text-yellow hover:underline transition-colors">
+          <a [routerLink]="[item.link]" routerLinkActive="text-green" [routerLinkActiveOptions]="{ exact: true }"
+            class="block">
+            {{ item.name }}
+          </a>
+        </li>
+        }
+      </ul>
+    </nav>
+
+    <!-- Mobile Burger Button -->
+    <button (click)="toggleMenu()" class="lg:hidden p-2 hover:bg-gray-100 rounded-md transition-colors"
+      [attr.aria-expanded]="isMenuOpen" aria-label="Toggle mobile menu">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Desktop Auth Section -->
+  <div class="hidden lg:flex items-center">
+    @if (isAuth()) {
+    <!-- Authenticated User - Desktop -->
+    <div class="flex items-center space-x-4">
+      <button class="p-2 hover:bg-gray-100 rounded-md transition-colors" aria-label="Notificaciones">
+        <img src="/assets/svgs/bell.svg" alt="Notificaciones" class="w-[25px] h-[25px]">
+      </button>
+
+      <button class="w-[70px] h-[70px]
+                       border border-gray-300
+                       rounded-full
+                       bg-center bg-cover
+                       hover:border-gray-400 transition-colors"
+        [style.backgroundImage]="'url(/assets/images/profile-image.jpg)'" aria-label="Perfil de usuario">
+      </button>
+    </div>
+    } @else {
+    <!-- Not Authenticated - Desktop -->
+    <div class="flex items-center space-x-3 text-base">
+      <button class="border border-gray-300
+                       w-[196px] h-[40px]
+                       rounded-[10px]
+                       hover:bg-green/40 transition-colors" [routerLink]="['/auth/register']">
+        Registrarme
+      </button>
+
+      <button class="bg-purple
+                       w-[196px] h-[40px]
+                       rounded-[10px]
+                       hover:bg-purple/90 transition-colors text-white" [routerLink]="['/auth/login']">
+        Iniciar Sesión
+      </button>
+    </div>
+    }
+  </div>
+
+  <!-- Mobile Menu Container -->
+  <div class="lg:hidden
+              overflow-hidden transition-all duration-300 ease-in-out"
+    [ngClass]="isMenuOpen ? 'max-h-96 opacity-100 visible' : 'max-h-0 opacity-0 invisible'">
+
+    <!-- Mobile Navigation Menu -->
+    <nav class="mt-4" aria-label="Mobile navigation">
+      <ul class="flex flex-col text-lg space-y-4">
+
+        <!-- Navigation Links -->
+        @for (item of navbarItems; track $index) {
+        <li>
+          <a [routerLink]="[item.link]" routerLinkActive="text-green" [routerLinkActiveOptions]="{ exact: true }"
+            (click)="isMenuOpen = false" class="block py-2 hover:text-yellow hover:underline transition-colors">
+            {{ item.name }}
+          </a>
+        </li>
+        }
+
+        <!-- Mobile Auth Options -->
+        @if (isAuth()) {
+        <!-- Authenticated User Options -->
+        <li>
+          <button (click)="isMenuOpen = false"
+            class="flex items-center py-2 w-full text-left hover:text-yellow transition-colors">
+            Notificaciones
+          </button>
+        </li>
+
+        <li>
+          <button (click)="isMenuOpen = false"
+            class="flex items-center py-2 w-full text-left hover:text-yellow transition-colors">
+            <div class="w-[25px] h-[25px]
+                          border border-gray-300
+                          rounded-full
+                          bg-center bg-cover mr-3" [style.backgroundImage]="'url(/assets/images/profile-image.jpg)'">
+            </div>
+            Mi Perfil
+          </button>
+        </li>
+        } @else {
+        <!-- Not Authenticated Options -->
+        <li>
+          <a (click)="isMenuOpen = false" class="block py-2 hover:text-yellow hover:underline transition-colors">
+            Registrarme
+          </a>
+        </li>
+
+        <li>
+          <a (click)="isMenuOpen = false" class="block py-2 hover:text-yellow hover:underline transition-colors">
+            Iniciar Sesión
+          </a>
+        </li>
+        }
+      </ul>
+    </nav>
+  </div>
+</nav>

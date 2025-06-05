@@ -1,0 +1,77 @@
+<nav class="flex flex-col lg:flex-row justify-between h-auto lg:h-[136px] py-4 lg:py-8 px-4 lg:px-16 font-archivo overflow-hidden transition-all duration-300 ease-in-outs
+">
+  <div class="flex justify-between items-center lg:justify-start lg:flex-1">
+    <!-- Logo -->
+    <div class="flex items-center">
+      <img src="/assets/svgs/logo.svg" alt="Logo" class="w-[50px] h-[50px]">
+    </div>
+
+    <!-- Navigation Links - Desktop (junto al logo) -->
+    <div class="hidden lg:flex items-center ml-11">
+      <ul class="flex flex-row text-lg">
+        @for (item of navbarItems; track $index) {
+        <li class="ml-11 hover:text-yellow hover:underline">
+          <a [routerLink]="[item.link]" routerLinkActive="text-green" [routerLinkActiveOptions]="{ exact: true }">
+            {{ item.name }}
+          </a>
+        </li>
+        }
+      </ul>
+    </div>
+
+    <!-- Burger Menu -->
+    <button (click)="toggleMenu()" class="lg:hidden">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Auth Buttons - Desktop -->
+  @if (isAuth()) {
+  <div class="hidden lg:flex items-center overflow-hidden transition-all duration-300 ease-in-out">
+    <img src="/assets/svgs/bell.svg" alt="Notificaciones" class="w-[25px] h-[25px] cursor-pointer mr-4">
+    <button class="border w-[70px] h-[70px] rounded-[100px] mr-3 bg-center bg-cover"
+      [style.backgroundImage]="'url(/assets/images/profile-image.jpg)'"></button>
+  </div>
+  } @else {
+  <div class="hidden lg:flex items-center text-base font-archivo">
+    <button class="border w-[196px] h-[40px] rounded-[10px] mr-3" [routerLink]="['/auth/register']">Registrarme</button>
+    <button class="bg-purple w-[196px] h-[40px] rounded-[10px]" [routerLink]="['/auth/login']">Iniciar Sesión</button>
+  </div>
+  }
+
+  <!-- Mobile Menu -->
+  <div class="lg:hidden overflow-hidden transition-all duration-300 ease-in-out"
+    [ngClass]="isMenuOpen ? 'max-h-96 opacity-100 visible' : 'max-h-0 opacity-0 invisible'">
+    <ul class="flex flex-col text-lg mt-4">
+      @for (item of navbarItems; track $index) {
+      <li class="mt-4 hover:text-yellow hover:underline">
+        <a [routerLink]="[item.link]" routerLinkActive="text-green" [routerLinkActiveOptions]="{ exact: true }"
+          (click)="isMenuOpen = false">
+          {{ item.name }}
+        </a>
+      </li>
+      }
+    </ul>
+  </div>
+
+  <!-- Mobile Auth Buttons -->
+  @if (isAuth()) {
+  <div class="lg:hidden flex items-center mt-4 overflow-hidden transition-all duration-300 ease-in-out"
+    [ngClass]="isMenuOpen ? 'max-h-96 opacity-100 visible' : 'max-h-0 opacity-0 invisible'">
+    <img src="/assets/svgs/bell.svg" alt="Notificaciones" class="w-[25px] h-[25px] cursor-pointer mr-4">
+    <button class="border w-[70px] h-[70px] rounded-[100px] mr-3 bg-center bg-cover"
+      [style.backgroundImage]="'url(/assets/images/profile-image.jpg)'"></button>
+  </div>
+  } @else {
+  <div
+    class="lg:hidden flex flex-col mt-4 text-base font-archivo overflow-hidden transition-all duration-300 ease-in-out"
+    [ngClass]="isMenuOpen ? 'max-h-96 opacity-100 visible' : 'max-h-0 opacity-0 invisible'">
+    <button class="border w-full h-[40px] rounded-[10px] mb-3" [routerLink]="['/auth/register']"
+      (click)="isMenuOpen = false">Registrarme</button>
+    <button class="bg-purple w-full h-[40px] rounded-[10px]" [routerLink]="['/auth/login']"
+      (click)="isMenuOpen = false">Iniciar Sesión</button>
+  </div>
+  }
+</nav>

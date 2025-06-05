@@ -1,1 +1,40 @@
-/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Sofia Sans';
+  src: url('./assets/fonts/SofiaSans.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Sofia Sans Black';
+  src: url('./assets/fonts/SofiaSans-Black.ttf') format('truetype');
+  font-weight: bolder;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Archivo';
+  src: url('./assets/fonts/Archivo.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@theme {
+  --color-white: #e2e2e2;
+  --color-green: #48d77b;
+  --color-purple: #6b45ff;
+  --color-yellow: #ae9d3f;
+  --color-light-grey: #39414c;
+  --color-bg-dark: #1b212f;
+  --color-bg-darker: #141720;
+  --font-sofia: 'Sofia Sans', sans-serif;
+  --font-sofia-black: 'Sofia Sans Black', sans-serif;
+  --font-archivo: 'Archivo', sans-serif;
+}
+
+body {
+  @apply bg-bg-dark text-white font-sofia;
+}

@@ -1,0 +1,37 @@
+<div class="p-8">
+  <!-- Header Section -->
+  <div class="flex items-end lg:items-center justify-between mb-4">
+    <div class="flex text-green font-sofia-black text-xs lg:text-lg bg-bg-dark py-2 px-4 rounded-lg animate-pulse">
+      <div class="w-5 h-5 mr-2 bg-gray-700 rounded"></div>
+      <div class="w-20 h-5 bg-gray-700 rounded"></div>
+    </div>
+
+    <div class="font-sofia-black text-xs lg:text-lg bg-bg-dark py-2 px-4 rounded-lg animate-pulse">
+      <div class="w-32 h-5 bg-gray-700 rounded"></div>
+    </div>
+  </div>
+
+  <!-- Desktop Gallery Skeleton -->
+  <div class="hidden lg:block">
+    <div class="relative mb-6 overflow-hidden rounded-xl bg-black/50">
+      <div class="aspect-video bg-gray-700 rounded-xl animate-pulse"></div>
+    </div>
+    <div class="flex gap-3 justify-center">
+      @for (item of [1,2,3,4,5]; track $index) {
+        <div class="w-20 h-20 bg-gray-700 rounded-lg animate-pulse"></div>
+      }
+    </div>
+  </div>
+
+  <!-- Mobile Gallery Skeleton -->
+  <div class="lg:hidden">
+    <div class="relative mb-6 overflow-hidden rounded-xl bg-black/50">
+      <div class="aspect-video bg-gray-700 rounded-xl animate-pulse"></div>
+    </div>
+    <div class="flex gap-3 justify-start items-center overflow-auto pt-1 pb-6 px-2">
+      @for (item of [1,2,3,4,5]; track $index) {
+        <div class="w-16 h-12 sm:w-20 sm:h-14 bg-gray-700 rounded-lg animate-pulse flex-shrink-0"></div>
+      }
+    </div>
+  </div>
+</div>

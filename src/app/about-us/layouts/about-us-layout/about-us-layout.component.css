@@ -1,0 +1,14 @@
+:host {
+  display: block;
+
+  background:
+    /* Gradiente cónico desde esquina superior derecha */
+    conic-gradient(from 180deg at 80% 20%,
+      transparent 27%,
+      rgb(126, 134, 243) 44%,
+      rgb(73, 213, 124, 0.82) 67%,
+      rgb(73, 213, 124, 0.12) 80%,
+      transparent 91%,
+      transparent 360deg);
+  background-repeat: no-repeat;
+}

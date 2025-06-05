@@ -1,0 +1,10 @@
+<div class="bg-bg-dark rounded-2xl p-6 animate-pulse">
+  <div class="grid grid-cols-4 grid-rows-5 gap-4">
+    <!-- Columna 1: 5 filas pequeñas -->
+    @for (item of [1,2,3,4,5]; track $index) {
+    <div class="h-10 bg-gray-700 rounded-lg"></div>
+    }
+    <!-- Placeholder grande ocupando cols 2-4 y rows 1-5 -->
+    <div class="col-start-2 col-span-3 row-start-1 row-span-5 bg-gray-700 rounded-lg"></div>
+  </div>
+</div>

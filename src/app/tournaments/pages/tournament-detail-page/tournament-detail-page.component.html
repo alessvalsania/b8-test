@@ -1,0 +1,32 @@
+<div class="min-h-screen bg-bg-darker p-6 lg:px-12 lg:py-14 lg:mx-6 lg:mb-6 lg:rounded-4xl">
+  @if (tournamentRes.isLoading()) {
+  <div class="flex h-full flex-col lg:flex-row lg:items-start lg:justify-between mb-3">
+    <div class="lg:w-1/3 mb-3">
+      <tou-tournament-detail-skeleton />
+    </div>
+    <div class="lg:w-2/3">
+      <sha-gallery-skeleton />
+    </div>
+  </div>
+  <div>
+    <tou-tournament-tableview-skeleton />
+  </div>
+  }
+  @if(tournamentRes.hasValue() && tournamentRes.value() !==null) {
+  <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-3">
+    <div class="lg:w-1/3 mb-3 lg:mr-2 self-center">
+      <tou-tournament-detail [game]="tournamentRes.value()!.game" [tournamentName]="tournamentRes.value()!.name"
+        [prizePool]="tournamentRes.value()!.prizePool" [date]="tournamentRes.value()!.date"
+        [bracketFormat]="tournamentRes.value()!.bracketFormat" [minPlayers]="tournamentRes.value()!.minPlayers"
+        [maxPlayers]="tournamentRes.value()!.maxPlayers" [actualSignedUp]="tournamentRes.value()!.actualSignedUp" />
+    </div>
+    <div class="lg:w-2/3">
+      <sha-gallery-shell [images]="tournamentRes.value()!.imagesUrls ?? []" [status]="tournamentRes.value()!.status"
+        [organizer]="tournamentRes.value()!.organizer" />
+    </div>
+  </div>
+  <div>
+    <tou-tournament-detail-tableview />
+  </div>
+  }
+</div>

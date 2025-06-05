@@ -1,0 +1,87 @@
+<div class="bg-bg-darker rounded-lg max-w-md">
+  <!-- Game Title -->
+  <div class="text-center lg:text-start mb-6">
+    <h1 class="text-white font-sofia-black text-4xl lg:text-7xl uppercase">
+      {{ game() }}
+    </h1>
+    <h2 class="text-white font-sofia text-lg lg:text-3xl uppercase">
+      {{ tournamentName() }}
+    </h2>
+  </div>
+
+  <!-- Prize Pool -->
+  <div class="bg-bg-dark p-3 text-center mb-6 rounded-lg">
+    <div class="text-green text-3xl font-sofia-black">
+      PREMIO ${{ prizePool() }}
+    </div>
+  </div>
+
+  <!-- Tournament Details -->
+  <div class="space-y-4">
+    <!-- Date -->
+    <div class="flex items-center">
+      <div class="flex items-center w-1/2 text-light-grey text-lg lg:text-2xl">
+        <img class="w-6 h-6 mr-3" src="assets/svgs/date.svg" alt="Calendar Icon">
+        <span class="font-sofia-black uppercase">FECHA</span>
+      </div>
+      <div class="w-1/2 text-white font-sofia lg:text-xl">
+        {{ date() | date:'dd/MM/yyyy' }}
+      </div>
+    </div>
+
+    <!-- Time -->
+    <div class="flex items-center">
+      <div class="flex items-center w-1/2 text-light-grey text-lg lg:text-2xl">
+        <img class="w-6 h-6 mr-3" src="assets/svgs/hour.svg" alt="hour Icon">
+        <span class="font-sofia-black uppercase">HORA</span>
+      </div>
+      <div class="w-1/2 text-white font-sofia lg:text-xl">
+        {{ date() | date:'HH:mm' }}
+      </div>
+    </div>
+
+    <!-- Format -->
+    <div class="flex items-center">
+      <div class="flex items-center w-1/2 text-light-grey text-lg lg:text-2xl">
+        <img class="w-6 h-6 mr-3" src="assets/svgs/screen-1.svg" alt="Bracket Icon">
+        <span class="font-sofia-black uppercase">FORMATO</span>
+      </div>
+      <div class="w-1/2 text-white font-sofia lg:text-xl">
+        {{ bracketFormat() }}
+      </div>
+    </div>
+
+    <!-- Min Players -->
+    <div class="flex items-center">
+      <div class="flex items-center w-1/2 text-light-grey text-lg lg:text-2xl">
+        <img class="w-6 h-6 mr-3" src="assets/svgs/user.svg" alt="Min Players Icon">
+        <span class="font-sofia-black uppercase">MIN PLAYERS</span>
+      </div>
+      <div class="w-1/2 text-white font-sofia lg:text-xl">
+        {{ minPlayers() }}
+      </div>
+    </div>
+
+    <!-- Max Players -->
+    <div class="flex items-center">
+      <div class="flex items-center w-1/2 text-light-grey text-lg lg:text-2xl">
+        <img class="w-6 h-6 mr-3" src="assets/svgs/user.svg" alt="Max Players Icon">
+        <span class="font-sofia-black uppercase">MAX PLAYERS</span>
+      </div>
+      <div class="w-1/2 text-white font-sofia lg:text-xl">
+        {{ maxPlayers() }}
+      </div>
+    </div>
+
+    <!-- Signed Up -->
+    <div class="flex items-center">
+      <div class="flex items-center w-1/2 text-light-grey text-lg lg:text-2xl">
+        <img class="w-6 h-6 mr-3" src="assets/svgs/user.svg" alt="Inscritos Icon">
+        <span class="font-sofia-black uppercase ">INSCRITOS</span>
+      </div>
+      <div class="w-1/2 text-green font-sofia font-bold lg:text-xl">
+        {{ actualSignedUp() }}
+      </div>
+    </div>
+  </div>
+</div>
